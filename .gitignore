@@ -1,0 +1,29 @@
+# Results folder
+results/
+**/__pycache__/*
+
+#cmake files
+build/
+*.cmake
+
+# Log files
+*.log
+*.pyc
+tk3_sim/__pycache__/utils.cpython-310.pyc
+.vscode/
+*.pkl
+
+# images
+*.png
+
+#chatgpt
+.codex
+.agents
+
+*.pdf
+logs_*
+*.json
+*.csv
+
+# Local Python environment
+.venv/

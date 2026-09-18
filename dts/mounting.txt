@@ -1,0 +1,31 @@
+FRAME AND MOUNTING CONVENTIONS
+
+The implementation is in tk3_sim/core/utils.py. Distances are in meters and
+angles passed to the transforms are in radians unless the name says DEG.
+
+Rotations
+- frame_R_basis maps coordinates from frame into basis.
+- POM provides the body-to-world quaternion as qw, qx, qy, qz.
+- SciPy Rotation receives the same quaternion reordered as qx, qy, qz, qw.
+- The camera-to-sensor rotation is diag(-1, -1, 1).
+- The sensor-to-body rotation is a -30 degree yaw about body z.
+- The sensor origin is [0, 0, -d] in body coordinates, where
+  d = (74.255 + 65.0) / 1000 = 0.139255 m.
+
+Twists
+- A twist is [vx, vy, vz, wx, wy, wz].
+- For rotation R and origin offset p in the destination frame:
+    v_destination = R @ v_source + p cross (R @ w_source)
+    w_destination = R @ w_source
+- camera_to_world_twist_matrix composes camera-to-sensor, sensor-to-body,
+  then body-to-world transforms.
+
+Current DTS controller
+- The solved sensor command is [vx_sensor, vy_sensor, wz_sensor].
+- Sensor vz, wx and wy are zero.
+- After the sensor-to-body transform, body vz, wx and wy are also zeroed.
+- The command is rotated into world coordinates, then world vz is zeroed.
+- Altitude is sent as the uavpos position reference, separately from velocity.
+
+Update SENSOR_YAW_WRT_BODY_DEG and DEFAULT_SENSOR_Z_OFFSET_M in utils.py when
+the mounting changes, and use camera calibration for the same crop/resolution.
