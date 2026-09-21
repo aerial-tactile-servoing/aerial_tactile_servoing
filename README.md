@@ -21,7 +21,7 @@ Install Git LFS before cloning; the inference models are stored in LFS.
 
 ```sh
 git lfs install
-git clone --branch cleanup/aerial-dts-baseline --recurse-submodules https://github.com/aerial-tactile-servoing/aerial_tactile_servoing.git
+git clone --recurse-submodules https://github.com/aerial-tactile-servoing/aerial_tactile_servoing.git
 cd aerial_tactile_servoing
 ```
 
