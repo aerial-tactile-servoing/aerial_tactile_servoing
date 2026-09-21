@@ -1,0 +1,3 @@
+[submodule "gelsight_interface"]
+	path = gelsight_interface
+	url = https://gitlab.inria.fr/lprior/gelsight_interface.git

@@ -1,0 +1,14 @@
+--- a/src/plugin.cc
++++ b/src/plugin.cc
+@@ -185,8 +185,11 @@
+   ~optitrack()
+   {
+     pthread_mutex_lock(&mutex);
++    // Wake recvfrom before closing: close alone does not unblock it on Linux.
++    shutdown(fd, SHUT_RDWR);
+     close(fd);
+     fd = -1;
++    pthread_cond_signal(&cond);
+     pthread_mutex_unlock(&mutex);
+     pthread_join(cmd, NULL);
+     pthread_join(pub, NULL);

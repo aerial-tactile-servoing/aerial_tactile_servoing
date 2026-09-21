@@ -1,0 +1,12 @@
+*
+!Dockerfile
+!LICENSE
+!optitrack-shutdown.patch
+!gazebo_plugin/
+!gazebo_plugin/CMakeLists.txt
+!gazebo_plugin/constant_wrench_system.cc
+!models/
+!models/**
+!worlds/
+!worlds/**
+!tk3-wrench-sim.sh
