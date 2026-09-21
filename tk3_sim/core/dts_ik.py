@@ -25,7 +25,7 @@ import numpy as np
 import torch
 import torch_tensorrt  # Registers TensorRT operators used by torch.jit.load.
 
-import gelsight_interface.gelsight_interface.gelsight as gs
+import gelsight_interface.gelsight as gs
 import mylogger
 import tk3_sim.core.utils as utils
 from tk3_sim.core.log_paths import make_log_paths, print_log_paths

@@ -17,15 +17,12 @@ All commands below are run from the repository root unless stated otherwise.
 
 ## 1. Get the repository
 
-Install Git LFS before cloning; the inference models are stored in LFS.
+Clone the repo:
 
 ```sh
-git lfs install
-git clone --recurse-submodules https://github.com/aerial-tactile-servoing/aerial_tactile_servoing.git
+git clone https://github.com/aerial-tactile-servoing/aerial_tactile_servoing.git
 cd aerial_tactile_servoing
 ```
-
-Access to the repository and the `gelsight_interface` submodule is required.
 
 ## 2. Start the Docker simulator
 
@@ -107,7 +104,7 @@ serial and run on the host:
 ```sh
 python - <<'PY'
 import cv2
-from gelsight_interface.gelsight_interface.gelsight import Gelsight
+from gelsight_interface.gelsight import Gelsight
 
 sensor = Gelsight("2DDW-JXDC", (480, 640))
 try:
